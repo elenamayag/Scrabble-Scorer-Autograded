@@ -35,18 +35,14 @@ function oldScrabbleScorer(word) {
 // your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
 
-
 function initialPrompt() {
    let question = input.question("Let's play some scrabble! Enter a word: ");
-
 
    return question;
 };
 
 
 let selectedWord = initialPrompt();
-
-
 
 
 let newPointStructure = {
@@ -85,7 +81,6 @@ function simpleScorer(word) {
    word = word.toUpperCase();
    let score = 0;
    score = Number(word.length);
-
 
    return score;
 
@@ -217,12 +212,9 @@ function transform(oldPointStructure) {
    return newPointStructure;
 };
 
-
-
-
 function runProgram() {
    scorerPrompt(selectedWord)
-}
+};
 
 
 // Don't write any code below this line //
