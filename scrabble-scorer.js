@@ -133,7 +133,7 @@ function scrabbleScorer(word) {
 
 let scoringAlgorithms = [
    {
-      name: "Simple Score",
+      name: "Simple",
       description: "Each letter is worth 1 point.",
       scorerFunction: simpleScorer
    },
@@ -160,19 +160,18 @@ let scoringAlgorithms = [
 
 function scorerPrompt() {
    let selectedScorerPrompt = input.question("Which scoring algorithm would you like to use? \n 0 - Simple Scorer: One point per character \n 1 - Vowel Bonus Scorer: Vowels are worth 3 points \n 2 - Scrabble Scorer: Uses scrabble point system \n\nEnter 0, 1, or 2: ");
+  
    if (selectedScorerPrompt === "0") {
-      console.log(`Name of the scoring algorithms you've selected is: ${scoringAlgorithms[0].name} \nThe result is: ${scoringAlgorithms[0].scorerFunction(selectedWord)}`);
+      console.log(`The scoring algorithm you've selected is: ${scoringAlgorithms[0].name} \nThe scoring algorithm result: ${scoringAlgorithms[0].scorerFunction(selectedWord)}`);
    }
    else if (selectedScorerPrompt === "1") {
-      console.log(`Name of the scoring algorithms you've selected is: ${scoringAlgorithms[1].name} \nThe result is: ${scoringAlgorithms[1].scorerFunction(selectedWord)}`);
+      console.log(`The scoring algorithm you've selected is: ${scoringAlgorithms[1].name} \nThe scoring algorithm result: ${scoringAlgorithms[1].scorerFunction(selectedWord)}`);
    }
    else if (selectedScorerPrompt === "2") {
-      console.log(`Name of the scoring algorithms you've selected is: ${scoringAlgorithms[2].name} \nThe result is: ${scoringAlgorithms[2].scorerFunction(selectedWord)}`);
+      console.log(`The scoring algorithm you've selected is: ${scoringAlgorithms[2].name} \nThe scoring algorithm result: ${scoringAlgorithms[2].scorerFunction(selectedWord)}`);
    }
    else {
       return console.log(`SNEAKY SNEAKY, please select a valid number!`)
-
-
    }
 };
 
