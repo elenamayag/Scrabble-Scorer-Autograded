@@ -34,18 +34,18 @@ function oldScrabbleScorer(word) {
 
 // your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
-
+let question = "";
 function initialPrompt() {
-   let question = input.question("Let's play some scrabble! Enter a word: ");
+   question = input.question("Let's play some scrabble! Enter a word: ");
 
    return question;
 };
 
 
-let selectedWord = initialPrompt();
 
 
-let newPointStructure = {
+
+/*let newPointStructure = {
    a: 1,
    e: 1,
    i: 1,
@@ -72,7 +72,7 @@ let newPointStructure = {
    x: 8,
    q: 10,
    z: 10
-};
+};*/
 
 
 
@@ -104,7 +104,7 @@ function vowelBonusScorer(word) {
       } else {
          score++;
       }
-   return score
+   return score;
 };
 
 
@@ -119,7 +119,7 @@ function scrabbleScorer(word) {
       score += newPointStructure[word[i]];
    }
    return score;
-}
+};
 
 
 
@@ -155,52 +155,26 @@ let scoringAlgorithms = [
 
 function scorerPrompt() {
    let selectedScorerPrompt = input.question("Which scoring algorithm would you like to use? \n 0 - Simple Scorer: One point per character \n 1 - Vowel Bonus Scorer: Vowels are worth 3 points \n 2 - Scrabble Scorer: Uses scrabble point system \n\nEnter 0, 1, or 2: ");
-  
+
    if (selectedScorerPrompt === "0") {
-      console.log(`The scoring algorithm you've selected is: ${scoringAlgorithms[0].name} \nThe scoring algorithm result: ${scoringAlgorithms[0].scorerFunction(selectedWord)}`);
+      return scoringAlgorithms[0];
    }
    else if (selectedScorerPrompt === "1") {
-      console.log(`The scoring algorithm you've selected is: ${scoringAlgorithms[1].name} \nThe scoring algorithm result: ${scoringAlgorithms[1].scorerFunction(selectedWord)}`);
+      return scoringAlgorithms[1];
    }
    else if (selectedScorerPrompt === "2") {
-      console.log(`The scoring algorithm you've selected is: ${scoringAlgorithms[2].name} \nThe scoring algorithm result: ${scoringAlgorithms[2].scorerFunction(selectedWord)}`);
+      return scoringAlgorithms[2];
    }
    else {
-      return console.log(`SNEAKY SNEAKY, please select a valid number!`)
+      return console.log(`SNEAKY SNEAKY, please select a valid number!`);
    }
 };
 
 
 
 function transform(oldPointStructure) {
-   /* let newPointStructure = {
-   a: 1,
-   e: 1,
-   i: 1,
-   o: 1,
-   u: 1,
-   l: 1,
-   n: 1,
-   r: 1,
-   s: 1,
-   t: 1,
-   d: 2,
-   g: 2,
-   b: 3,
-   c: 3,
-   m: 3,
-   p: 3,
-   f: 4,
-   h: 4,
-   v: 4,
-   w: 4,
-   y: 4,
-   k: 5,
-   j: 8,
-   x: 8,
-   q: 10,
-   z: 10
-   };*/
+
+   let newPointStructure = {}
    for (let points in oldPointStructure) {
       let score = Number(points);
 
@@ -212,8 +186,17 @@ function transform(oldPointStructure) {
    return newPointStructure;
 };
 
+let newPointStructure = transform(oldPointStructure)
+
+
 function runProgram() {
-   scorerPrompt(selectedWord)
+   initialPrompt();
+   let selectedAlgorithm = scorerPrompt();
+   
+   if (selectedAlgorithm) {
+      const score = selectedAlgorithm.scorerFunction(question)
+      console.log (`Selected scorer: ${question} : ${score}`)
+   }
 };
 
 
